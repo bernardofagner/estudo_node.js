@@ -31,7 +31,9 @@ console.log(4);
 
 
 //Promisses (Similar a Tasks) - Descomente um bloco de cada vez
-const lerArquivo = file => new Promise((resolve, reject)=> 
+
+
+const lerArquivo = (file) => new Promise((resolve, reject)=> 
 {
     arquivo.readFile(file, (erro, resultado) => 
     {
@@ -44,6 +46,8 @@ const lerArquivo = file => new Promise((resolve, reject)=>
     });
 });
 
+/*
+//Forma 1 de gerenciar uma promise asyncrona
 lerArquivo('./arquivo.txt').then(resultado =>
 {
     console.log(String(resultado));
@@ -52,4 +56,30 @@ lerArquivo('./arquivo.txt').then(resultado =>
 .then(resultado => 
 {
     console.log(String(resultado));
+})
+.finally(() => 
+{
+    console.log("Promisse executada por completo");
 });
+*/
+
+console.log(2);
+console.log(3);
+console.log(4);
+
+setTimeout(() => console.log("Timeout concluido"), 1000);
+
+//async/await é uma forma mais simples de identificar uma promisse  - Descomente um bloco de cada vez
+
+
+//Forma 2 de gerenciar uma promise asyncrona
+const funcaoTeste = async () => {
+    const resultado = await lerArquivo('./arquivo.txt');
+    console.log(String(resultado));
+}
+
+console.log('Retorno: ',funcaoTeste()); //Uma função async é uma promise
+
+console.log(2);
+console.log(3);
+console.log(4);
